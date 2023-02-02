@@ -1,6 +1,6 @@
 ## Boo-Gen!
 
-This has been folked from h0mbre's boo-gen and has a couple of slight changes that allow it to create a python script to fuzz over https
+The script has been forked from h0mbre's boo-gen and now has the ability to create a Python script that performs fuzzing over HTTPS. Several changes have been made, including fixing a Python double quote conflict issue and enabling the use of a specified port from the burp file. In addition, the certificate checks have been disabled, making it compatible with self-signed certificates. In the future, I plan to incorporate multiprocessing to allow for concurrent fuzzing of multiple requests.
 
 ## Usage 
 
