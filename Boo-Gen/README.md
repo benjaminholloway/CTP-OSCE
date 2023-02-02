@@ -4,12 +4,12 @@ This has been folked from h0mbre's boo-gen and has a couple of slight changes th
 
 ## Usage 
 
-`boo-gen.py request.txt <method> <output filename(optional)>`
+`HTTPS-Boo-Gen.py request.txt <method> <output filename(optional)>`
 
 ### Examples
-`boo-gen.py get.txt --get -f fuzz.py`
+`HTTPS-Boo-Gen.py get.txt --get -f fuzz.py`
 
-`boo-gen.py post.txt --post -f fuzz.py`
+`HTTPS-Boo-Gen.py post.txt --post -f fuzz.py`
 
 ## GET Requests
 
@@ -33,9 +33,9 @@ Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
 Connection: close
 ```
 
-### Running Boo-Gen
+### Running HTTPS-Boo-Gen.py
 ```terminal_session
-root@kali:~/ # python boo-gen.py get.txt --get
+root@kali:~/ # python HTTPS-Boo-Gen.py get.txt --get
 ```
 
 ### Output (http.py)
@@ -163,9 +163,9 @@ username=root&password=H0rizonta7&realm=pam&new-format=1
 
 ```
 
-### Running Boo-Gen
+### Running HTTPS-Boo-Gen.py
 ```terminal_session
-root@kali:~/ # python boo-gen.py post.txt --post
+root@kali:~/ # python HTTPS-Boo-Gen.py post.txt --post
 ```
 
 ### Output (http.py)
