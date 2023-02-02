@@ -5,7 +5,7 @@ import argparse
 
 parser = argparse.ArgumentParser(add_help=True)
 parser.add_argument("request", type=str, help="request template to fuzz")
-parser.add_argument("-f", "--filename", default="http.py", type=str, nargs="?", help="select name of fuzzing script (default is http.py)", metavar='filename')
+parser.add_argument("-f", "--filename", default="LetsGetFuzzing.py", type=str, nargs="?", help="select name of fuzzing script (default is LetsGetFuzzing.py)", metavar='filename')
 parser.add_argument("-g", "--get", help="for GET request",
                     action="store_true")
 parser.add_argument("-p", "--post", help="for POST request",
