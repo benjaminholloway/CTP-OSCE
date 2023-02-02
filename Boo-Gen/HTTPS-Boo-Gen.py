@@ -18,6 +18,8 @@ filename = args.filename
 
 myfile = open(request, "rt")
 contents = myfile.read()
+
+# this bit goes over the imported file and swaps all double quotes for single quotes.
 content = contents.replace('"', "'")
 contents =content
 myfile.close()
@@ -26,11 +28,12 @@ host = contents.splitlines()[1]
 host = host.split(":")[1]
 host = host.replace(" ", "")
 
+#extracts the port from the second line of the provided file and assigns it to the variable port.
 port = contents.splitlines()[1]
 port = port.split(":")[2]
 port = port.replace(" ", "")
-print(port)
-print(host)
+#print(port)
+#print(host)
 
 
 URI = contents.split(" ")[1]
@@ -51,6 +54,8 @@ def post():
     global method
     global URI
     fuzz = open(filename, "w")
+    #The following chunk has imported the ssl and then initiated the ssl connection as well as using the defined host and port defined above. 
+    
     fuzz.write('''#!/usr/bin/env python
 
 from boofuzz import *
