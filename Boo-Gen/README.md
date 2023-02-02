@@ -31,9 +31,6 @@ Sec-Fetch-Dest: document
 Accept-Encoding: gzip, deflate
 Accept-Language: en-GB,en-US;q=0.9,en;q=0.8
 Connection: close
-
-
-
 ```
 
 ### Running Boo-Gen
@@ -42,7 +39,7 @@ root@kali:~/ # python boo-gen.py get.txt --get
 ```
 
 ### Output (http.py)
-
+```python
 #!/usr/bin/env python
 from boofuzz import *
 #import multiprocessing
@@ -136,9 +133,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
 ```
 
 ## POST Requests
@@ -167,7 +161,6 @@ Connection: close
 
 username=root&password=H0rizonta7&realm=pam&new-format=1   
 
-
 ```
 
 ### Running Boo-Gen
@@ -176,6 +169,7 @@ root@kali:~/ # python boo-gen.py post.txt --post
 ```
 
 ### Output (http.py)
+```python
 #!/usr/bin/env python
 
 from boofuzz import *
