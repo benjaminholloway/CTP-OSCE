@@ -1,8 +1,8 @@
 ## Boo-Gen!
 
-This is just a little helper that takes a saved HTTP request from a file and then uses that to generate an HTTP Boofuzz script. It has been updated to handle POST requests and fuzz the post data. 
+This has been folked from h0mbre's boo-gen and has a couple of slight changes that allow it to create a python script to fuzz over https
 
-## Usage
+## Usage 
 
 `boo-gen.py request.txt <method> <output filename(optional)>`
 
