@@ -2,6 +2,7 @@
 
 import argparse
 
+
 parser = argparse.ArgumentParser(add_help=True)
 parser.add_argument("request", type=str, help="request template to fuzz")
 parser.add_argument("-f", "--filename", default="http.py", type=str, nargs="?", help="select name of fuzzing script (default is http.py)", metavar='filename')
@@ -10,17 +11,27 @@ parser.add_argument("-g", "--get", help="for GET request",
 parser.add_argument("-p", "--post", help="for POST request",
                     action="store_true")
 
+
 args = parser.parse_args()
 request = args.request
 filename = args.filename
 
 myfile = open(request, "rt")
 contents = myfile.read()
+content = contents.replace('"', "'")
+contents =content
 myfile.close()
 
 host = contents.splitlines()[1]
 host = host.split(":")[1]
 host = host.replace(" ", "")
+
+port = contents.splitlines()[1]
+port = port.split(":")[2]
+port = port.replace(" ", "")
+print(port)
+print(host)
+
 
 URI = contents.split(" ")[1]
 
@@ -41,14 +52,19 @@ def post():
     global URI
     fuzz = open(filename, "w")
     fuzz.write('''#!/usr/bin/env python
-# Designed for use with boofuzz v0.0.9
+
 from boofuzz import *
+#import multiprocessing
+import ssl
 
 
 def main():
+    context = ssl.create_default_context()
+    context.check_hostname = False
+    context.verify_mode = ssl.CERT_NONE
     session = Session(
         target=Target(
-            connection=SocketConnection("''' + host + '''", 80, proto='tcp')
+            connection=SocketConnection("''' + host + '''",''' + port +''', proto='ssl', server=False, sslcontext=context, server_hostname="https://''' + host + ''':'''+ port+'''" )
         ),
     )
 
@@ -109,14 +125,17 @@ def get():
     global URI
     fuzz = open(filename, "w")
     fuzz.write('''#!/usr/bin/env python
-# Designed for use with boofuzz v0.0.9
 from boofuzz import *
-
+#import multiprocessing
+import ssl
 
 def main():
+    context = ssl.create_default_context()
+    context.check_hostname = False
+    context.verify_mode = ssl.CERT_NONE
     session = Session(
         target=Target(
-            connection=SocketConnection("''' + host + '''", 80, proto='tcp')
+            connection=SocketConnection("''' + host + '''",''' + port +''', proto='ssl', server=False, sslcontext=context, server_hostname="https://''' + host + ''':'''+ port+'''")
         ),
     )
 
